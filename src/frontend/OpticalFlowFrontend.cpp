@@ -41,14 +41,14 @@ namespace myslam
                                  cv::TermCriteria(cv::TermCriteria::COUNT + cv::TermCriteria::EPS, 30, 0.01),
                                  cv::OPTFLOW_USE_INITIAL_FLOW);
 
-        for (size_t i = 0; i < status.size(); ++i) {
+        for (size_t i = 0; i < status.size(); ++i)
+        {
             if (status[i]) // 跟踪成功
             {
-                cv::KeyPoint kp(kps_right[i], 7);                   // 7 特征点的邻域大小 经验值
+                cv::KeyPoint kp(kps_right[i], 7);          // 7 特征点的邻域大小 经验值
                 Feature::Ptr feat(new Feature(frame, kp)); // 创建2D特征点
 
-                frame->features_right_.push_back(feat);    // 添加到右图特征
-
+                frame->features_right_.push_back(feat); // 添加到右图特征
             }
             else // 跟踪失败
             {

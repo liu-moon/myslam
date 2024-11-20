@@ -42,9 +42,7 @@ int main()
 
     viewer->DisplayKeypoints(frame2);
 
-    viewer->DisplayKeypoints(frame2,false);
-
-
+    viewer->DisplayKeypoints(frame2, false);
 
     return 0;
 }

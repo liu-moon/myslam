@@ -3,8 +3,10 @@
 #include "myslam/common/common_include.h"
 #include "myslam/common/feature.h"
 
-namespace myslam{
-    struct Frame{
+namespace myslam
+{
+    struct Frame
+    {
         typedef std::shared_ptr<Frame> Ptr;
 
         cv::Mat left_img_, right_img_;
