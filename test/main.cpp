@@ -6,12 +6,14 @@
 
 using namespace myslam;
 
-int main() {
+int main()
+{
     // 创建一帧图像
     Frame::Ptr frame = std::make_shared<Frame>();
     frame->left_img_ = cv::imread("/home/liuiu/下载/data_odometry_gray/dataset/sequences/00/image_0/000000.png", cv::IMREAD_GRAYSCALE);
 
-    if (frame->left_img_.empty()) {
+    if (frame->left_img_.empty())
+    {
         std::cerr << "Failed to load image!" << std::endl;
         return -1;
     }
@@ -25,8 +27,10 @@ int main() {
     OpticalFlowFrontend OpticalFlowfrontend(150);
     Frame::Ptr frame2 = std::make_shared<Frame>();
     frame2->left_img_ = frame->left_img_;
+    frame2->right_img_ = cv::imread("/home/liuiu/下载/data_odometry_gray/dataset/sequences/00/image_1/000000.png", cv::IMREAD_GRAYSCALE);
 
     OpticalFlowfrontend.DetectFeature(frame2);
+    OpticalFlowfrontend.FindFeatureInRight(frame2);
 
     std::cout << "Detected features: " << frame2->features_left_.size() << std::endl;
 
@@ -37,6 +41,9 @@ int main() {
     viewer->DisplayKeypoints(frame);
 
     viewer->DisplayKeypoints(frame2);
+
+    viewer->DisplayKeypoints(frame2,false);
+
 
 
     return 0;

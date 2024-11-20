@@ -10,5 +10,6 @@ namespace myslam {
         public:
           OpticalFlowFrontend(int num_features = 500);
          void DetectFeature(Frame::Ptr frame) override;
+        void FindFeatureInRight(Frame::Ptr frame) override;
     };
 }

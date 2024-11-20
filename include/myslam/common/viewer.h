@@ -9,6 +9,6 @@ namespace myslam{
         typedef std::shared_ptr<Viewer> Ptr;
         Viewer(){};
 
-        void DisplayKeypoints(const Frame::Ptr frame);
+        void DisplayKeypoints(const Frame::Ptr frame, bool show_left = true);
     };
 }

@@ -7,6 +7,7 @@ namespace myslam{
     class FrontendBase{
         public:
         virtual void DetectFeature(Frame::Ptr frame) = 0;
+        virtual void FindFeatureInRight(Frame::Ptr frame) = 0;
         virtual ~FrontendBase() = default;
     };
 }
