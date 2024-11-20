@@ -3,6 +3,7 @@
 #include "myslam/frontend/ORBfrontend.h"
 #include "myslam/common/viewer.h"
 #include "myslam/frontend/OpticalFlowfrontend.h"
+#include "myslam/dataset/Kittidataset.h"
 
 using namespace myslam;
 
@@ -43,6 +44,11 @@ int main()
     viewer->DisplayKeypoints(frame2);
 
     viewer->DisplayKeypoints(frame2, false);
+
+    // dataset
+    std::string dataset_path = "/home/liuiu/下载/data_odometry_gray/dataset/sequences/00/";
+    KittiDataset::Ptr Kittidataset = std::make_shared<KittiDataset>(dataset_path);
+    Kittidataset->Init();
 
     return 0;
 }

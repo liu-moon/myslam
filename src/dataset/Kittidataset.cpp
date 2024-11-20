@@ -9,8 +9,9 @@ namespace myslam {
     bool KittiDataset::Init() {
         std::ifstream fin(dataset_path_ + "/calib.txt");
         if (!fin) {
-            // LOG(ERROR) << "cannot find " << dataset_path_ << "/calib.txt!";
+            LOG(ERROR) << "cannot find " << dataset_path_ << "/calib.txt!";
             return false;
         }
+        return true;
     };
 }
