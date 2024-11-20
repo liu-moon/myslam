@@ -15,7 +15,7 @@ namespace myslam
         cv::Mat descriptors;
 
         // 检测特征点
-        orb_->detectAndCompute(frame->image_, cv::noArray(), keypoints, descriptors);
+        orb_->detectAndCompute(frame->left_img_, cv::noArray(), keypoints, descriptors);
 
         // 将检测到的特征点存储到 Frame 的 features_ 中
         for (const auto &kp : keypoints)

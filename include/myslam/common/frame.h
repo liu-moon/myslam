@@ -7,7 +7,7 @@ namespace myslam{
     struct Frame{
         typedef std::shared_ptr<Frame> Ptr;
 
-        cv::Mat image_;
+        cv::Mat left_img_, right_img_;
         std::vector<std::shared_ptr<Feature>> features_;
 
         Frame() = default;
