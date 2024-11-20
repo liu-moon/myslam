@@ -14,7 +14,7 @@ namespace myslam {
         std::vector<cv::KeyPoint> keypoints;
         gftt_->detect(frame->left_img_,keypoints);
         for (auto &kp : keypoints) {
-            frame->features_.push_back(Feature::Ptr(new Feature(frame,kp)));
+            frame->features_left_.push_back(Feature::Ptr(new Feature(frame,kp)));
         }
     }
 

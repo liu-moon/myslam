@@ -28,10 +28,10 @@ int main() {
 
     OpticalFlowfrontend.DetectFeature(frame2);
 
-    std::cout << "Detected features: " << frame2->features_.size() << std::endl;
+    std::cout << "Detected features: " << frame2->features_left_.size() << std::endl;
 
     // 输出特征点数量
-    std::cout << "Detected " << frame->features_.size() << " features." << std::endl;
+    std::cout << "Detected " << frame->features_left_.size() << " features." << std::endl;
 
     Viewer::Ptr viewer = std::make_shared<Viewer>();
     viewer->DisplayKeypoints(frame);

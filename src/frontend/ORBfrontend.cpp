@@ -23,7 +23,7 @@ namespace myslam
             auto feature = std::make_shared<Feature>();
             feature->position_ = kp;
             feature->frame_ = frame;
-            frame->features_.push_back(feature);
+            frame->features_left_.push_back(feature);
         }
     }
 }
