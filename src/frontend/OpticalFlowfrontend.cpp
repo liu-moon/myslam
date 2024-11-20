@@ -1,8 +1,8 @@
-#include "myslam/frontend/OpticalFlowFrontend.h"
+#include "myslam/frontend/OpticalFlowfrontend.h"
 
 namespace myslam
 {
-    OpticalFlowFrontend::OpticalFlowFrontend(int num_features)
+    OpticalFlowfrontend::OpticalFlowfrontend(int num_features)
     {
         int max_corners = num_features;   // 最大角点数量
         double quality_level = 0.01;      // 角点质量阈值
@@ -12,7 +12,7 @@ namespace myslam
         gftt_ = cv::GFTTDetector::create(max_corners, quality_level, min_distance, 3, use_harris_detector, k);
     }
 
-    void OpticalFlowFrontend::DetectFeature(Frame::Ptr frame)
+    void OpticalFlowfrontend::DetectFeature(Frame::Ptr frame)
     {
         std::vector<cv::KeyPoint> keypoints;
         gftt_->detect(frame->left_img_, keypoints);
@@ -22,7 +22,7 @@ namespace myslam
         }
     }
 
-    void OpticalFlowFrontend::FindFeatureInRight(Frame::Ptr frame)
+    void OpticalFlowfrontend::FindFeatureInRight(Frame::Ptr frame)
     {
         std::vector<cv::Point2f> kps_left, kps_right;
         for (auto &kp : frame->features_left_) // 遍历左图特征点

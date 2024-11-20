@@ -2,7 +2,7 @@
 #include <iostream>
 #include "myslam/frontend/ORBfrontend.h"
 #include "myslam/common/viewer.h"
-#include "myslam/frontend/OpticalFlowFrontend.h"
+#include "myslam/frontend/OpticalFlowfrontend.h"
 
 using namespace myslam;
 
@@ -24,7 +24,7 @@ int main()
     ORBfrontend.DetectFeature(frame);
 
     // 创建 光流 前端
-    OpticalFlowFrontend OpticalFlowfrontend(150);
+    OpticalFlowfrontend OpticalFlowfrontend(150);
     Frame::Ptr frame2 = std::make_shared<Frame>();
     frame2->left_img_ = frame->left_img_;
     frame2->right_img_ = cv::imread("/home/liuiu/下载/data_odometry_gray/dataset/sequences/00/image_1/000000.png", cv::IMREAD_GRAYSCALE);

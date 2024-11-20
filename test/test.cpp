@@ -1,3 +1,4 @@
+#include <iostream>
 #include <glog/logging.h>
 #include "myslam/testnamespace.h"
 
