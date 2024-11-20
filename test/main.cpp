@@ -1,6 +1,7 @@
 #include <opencv2/opencv.hpp>
 #include <iostream>
 #include "myslam/frontend/ORBfrontend.h"
+#include "myslam/common/viewer.h"
 
 using namespace myslam;
 
@@ -22,6 +23,15 @@ int main() {
 
     // 输出特征点数量
     std::cout << "Detected " << frame->features_.size() << " features." << std::endl;
+
+    // 创建Viewer
+    if (frame->image_.empty()) {
+        std::cerr << "Failed to load image!" << std::endl;
+        return -1;
+    }
+    Viewer::Ptr viewer = std::make_shared<Viewer>();
+    viewer->DisplayKeypoints(frame);
+
 
     return 0;
 }

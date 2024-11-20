@@ -16,4 +16,5 @@ target_link_libraries(gftt
 target_link_libraries(main 
         myslam
         frontend
+        common
         ${THIRD_PARTY_LIBS})     
