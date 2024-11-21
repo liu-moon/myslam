@@ -6,14 +6,19 @@
 
 namespace myslam {
     class KittiDataset : public DatasetBase {
-        public:
-
+    public:
         typedef std::shared_ptr<KittiDataset> Ptr;
+
         KittiDataset(const std::string &dataset_path);
+
         bool Init() override;
 
+        Pinholecamera::Ptr GetCamera(int camera_id) const {
+            return cameras_.at(camera_id);
+        };
+
     private:
-        std::string dataset_path_;  // 数据集路径
+        std::string dataset_path_; // 数据集路径
         std::vector<Pinholecamera::Ptr> cameras_; // 相机向量
     };
 }

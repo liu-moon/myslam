@@ -35,4 +35,33 @@ namespace myslam
         cv::waitKey(0); // 等待按键关闭窗口
     }
 
+    void Viewer::DrawFeatureMatches(const cv::Mat &img_left, const cv::Mat &img_right, const std::vector<cv::Point2f> &kps_left, const std::vector<cv::Point2f> &kps_right, const std::vector<uchar> &status) {
+        // 创建一张新图，用于拼接左右图像
+        cv::Mat img_matches;
+        cv::hconcat(img_left, img_right, img_matches); // 将左右图像水平拼接
+
+        // 遍历特征点并绘制连线和点
+        for (size_t i = 0; i < kps_left.size(); ++i) {
+            if (status[i]) { // 只绘制匹配成功的特征点
+                // 左图中的特征点
+                cv::Point2f pt_left = kps_left[i];
+                // 右图中的特征点，右图的点需要偏移到拼接后的图像右半部分
+                cv::Point2f pt_right = kps_right[i] + cv::Point2f((float)img_left.cols, 0);
+
+                // 随机生成颜色
+                cv::Scalar color = cv::Scalar(rand() % 255, rand() % 255, rand() % 255);
+
+                // 绘制连线
+                cv::line(img_matches, pt_left, pt_right, color, 1, cv::LINE_AA);
+                // 绘制特征点
+                cv::circle(img_matches, pt_left, 5, color, -1);
+                cv::circle(img_matches, pt_right, 5, color, -1);
+            }
+        }
+
+        // 显示匹配图
+        cv::imshow("Feature Matches", img_matches);
+        cv::waitKey(0); // 等待用户按键
+    }
+
 }

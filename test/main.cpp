@@ -50,5 +50,7 @@ int main()
     KittiDataset::Ptr Kittidataset = std::make_shared<KittiDataset>(dataset_path);
     Kittidataset->Init();
 
+    OpticalFlowfrontend.SetCameras(Kittidataset->GetCamera(0), Kittidataset->GetCamera(1));
+    OpticalFlowfrontend.BuildInitMap();
     return 0;
 }
