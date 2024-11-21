@@ -17,3 +17,4 @@ typedef Sophus::SO3d SO3;
 
 typedef Eigen::Matrix<double, 3, 3> Mat33;
 typedef Eigen::Matrix<double, 3, 1> Vec3;
+typedef Eigen::Matrix<double, 2, 1> Vec2;

@@ -4915,12 +4915,32 @@
 									"model": {
 										"$ref": "AAAAAAGTS/gxn8OLhZk="
 									},
+									"subViews": [
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGTTtZQJm+/9zI=",
+											"_parent": {
+												"$ref": "AAAAAAGTS/gxoMOUSwg="
+											},
+											"model": {
+												"$ref": "AAAAAAGTTtZQDG+q3yY="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 813,
+											"top": 480,
+											"width": 95.6435546875,
+											"height": 13,
+											"text": "+pixelToCam()",
+											"horizontalAlignment": 0
+										}
+									],
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 808,
 									"top": 475,
 									"width": 105.6435546875,
-									"height": 10
+									"height": 23
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -4963,7 +4983,7 @@
 							"left": 808,
 							"top": 440,
 							"width": 104.6435546875,
-							"height": 45,
+							"height": 58,
 							"nameCompartment": {
 								"$ref": "AAAAAAGTS/gxoMOOKxI="
 							},
@@ -5100,8 +5120,8 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 760,
-									"top": 477,
+									"left": 759,
+									"top": 481,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -5122,8 +5142,8 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 761,
-									"top": 492,
+									"left": 760,
+									"top": 496,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -5144,8 +5164,8 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 757,
-									"top": 448,
+									"left": 758,
+									"top": 452,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -5166,8 +5186,8 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 782,
-									"top": 476,
+									"left": 781,
+									"top": 481,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -5188,8 +5208,8 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 780,
-									"top": 490,
+									"left": 779,
+									"top": 494,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -5211,7 +5231,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": false,
 									"left": 784,
-									"top": 449,
+									"top": 453,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -5232,8 +5252,8 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 738,
-									"top": 480,
+									"left": 737,
+									"top": 482,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -5253,8 +5273,8 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 741,
-									"top": 493,
+									"left": 740,
+									"top": 496,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -5274,8 +5294,8 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 731,
-									"top": 452,
+									"left": 732,
+									"top": 455,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -5323,7 +5343,7 @@
 								"$ref": "AAAAAAGTS/gxoMONIMU="
 							},
 							"lineStyle": 1,
-							"points": "807:466;711:473",
+							"points": "807:471;711:475",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGTTlGp68CyVuQ="
@@ -6020,6 +6040,16 @@
 								},
 								"aggregation": "composite"
 							}
+						}
+					],
+					"operations": [
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGTTtZQDG+q3yY=",
+							"_parent": {
+								"$ref": "AAAAAAGTS/gxn8OLhZk="
+							},
+							"name": "pixelToCam"
 						}
 					]
 				}
