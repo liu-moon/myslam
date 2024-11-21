@@ -16,6 +16,10 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 find_package(Glog REQUIRED)
 include_directories(${GLOG_INCLUDE_DIRS})
 
+# EIGEN
+find_package(Eigen3 REQUIRED)
+include_directories(${EIGEN3_INCLUDE_DIRS})
+
 set(THIRD_PARTY_LIBS
         glog::glog
         ${OpenCV_LIBS})

@@ -2,6 +2,7 @@
 
 #include "myslam/common/common_include.h"
 #include "myslam/dataset/dataset_base.h"
+#include "myslam/camera/Pinholecamera.h"
 
 namespace myslam {
     class KittiDataset : public DatasetBase {
@@ -12,6 +13,7 @@ namespace myslam {
         bool Init() override;
 
     private:
-        std::string dataset_path_;
+        std::string dataset_path_;  // 数据集路径
+        std::vector<Pinholecamera::Ptr> cameras_; // 相机向量
     };
 }

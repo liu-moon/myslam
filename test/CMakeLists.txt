@@ -18,4 +18,5 @@ target_link_libraries(main
         frontend
         common
         dataset
+        camera
         ${THIRD_PARTY_LIBS})     
