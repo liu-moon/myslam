@@ -1,9 +1,19 @@
 #include "myslam/frontend/OpticalFlowfrontend.h"
 #include <myslam/common/viewer.h>
 #include "myslam/common/algorithm.h"
+#include "myslam/map/mappoint.h"
 
 namespace myslam {
     OpticalFlowfrontend::OpticalFlowfrontend(int num_features) {
+        int max_corners = num_features; // 最大角点数量
+        double quality_level = 0.01; // 角点质量阈值
+        double min_distance = 20; // 最小角点间距
+        bool use_harris_detector = false; // 是否使用 Harris 检测器
+        double k = 0.04; // Harris 检测器的参数（如果启用）
+        gftt_ = cv::GFTTDetector::create(max_corners, quality_level, min_distance, 3, use_harris_detector, k);
+    }
+
+    OpticalFlowfrontend::OpticalFlowfrontend(Map::Ptr map, int num_features): map_(map) {
         int max_corners = num_features; // 最大角点数量
         double quality_level = 0.01; // 角点质量阈值
         double min_distance = 20; // 最小角点间距
@@ -107,6 +117,14 @@ namespace myslam {
             if (triangulation(poses, points, pworld) && pworld[2] > 0) // 三角化求点在世界坐标系中的位置
             {
                 LOG(INFO) << pworld;
+                auto new_map_point = MapPoint::CreateNewMappoint();
+                new_map_point->SetPos(pworld);
+                new_map_point->AddObservation(frame->features_left_[i]);
+                new_map_point->AddObservation(frame->features_right_[i]);
+                frame->features_left_[i]->map_point_ = new_map_point;
+                frame->features_right_[i]->map_point_ = new_map_point;
+                cnt_init_landmarks++;
+                map_->InsertMapPoint(new_map_point); // 插入地图
             }
         }
 

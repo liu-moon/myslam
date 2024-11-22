@@ -1,5 +1,7 @@
 #pragma once
 
+#include <myslam/map/map.h>
+
 #include "myslam/common/common_include.h"
 #include "myslam/frontend/frontend_base.h"
 #include "myslam/camera/Pinholecamera.h"
@@ -10,9 +12,12 @@ namespace myslam {
         cv::Ptr<cv::GFTTDetector> gftt_;
         Pinholecamera::Ptr camera_left_ = nullptr;
         Pinholecamera::Ptr camera_right_ = nullptr;
+        Map::Ptr map_;
 
     public:
         OpticalFlowfrontend(int num_features = 500);
+
+        OpticalFlowfrontend(Map::Ptr map, int num_features = 500);
 
         void DetectFeature(Frame::Ptr frame) override;
 

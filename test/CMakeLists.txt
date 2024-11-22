@@ -19,4 +19,5 @@ target_link_libraries(main
         common
         dataset
         camera
+        map
         ${THIRD_PARTY_LIBS})     
