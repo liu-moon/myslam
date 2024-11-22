@@ -7,10 +7,10 @@ namespace myslam {
     };
 
     /**
-     * @brief 通过针孔相机模型计算像素点在空间中的位置
+     * @brief 通过针孔相机模型计算像素点在相机坐标系中的位置
      * @param p_p 像素坐标
      * @param depth 深度(默认为1)
-     * @return 像素点在空间中的三维坐标
+     * @return 像素点在相机坐标系的三维坐标
      */
     Vec3 Pinholecamera::pixelToCam(const Vec2 &p_p, double depth) {
         /*

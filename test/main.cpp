@@ -51,6 +51,6 @@ int main()
     Kittidataset->Init();
 
     OpticalFlowfrontend.SetCameras(Kittidataset->GetCamera(0), Kittidataset->GetCamera(1));
-    OpticalFlowfrontend.BuildInitMap();
+    OpticalFlowfrontend.BuildInitMap(frame2);
     return 0;
 }

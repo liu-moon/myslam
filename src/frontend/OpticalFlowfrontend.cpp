@@ -1,6 +1,6 @@
 #include "myslam/frontend/OpticalFlowfrontend.h"
-
 #include <myslam/common/viewer.h>
+#include "myslam/common/algorithm.h"
 
 namespace myslam {
     OpticalFlowfrontend::OpticalFlowfrontend(int num_features) {
@@ -54,7 +54,7 @@ namespace myslam {
         // 调用绘图函数
         // todo 这里放在类外执行
         Viewer::Ptr viewer = std::make_shared<Viewer>();
-        viewer->DrawFeatureMatches(frame->left_img_, frame->right_img_,kps_left,kps_right,status);
+        viewer->DrawFeatureMatches(frame->left_img_, frame->right_img_, kps_left, kps_right, status);
     }
 
     void OpticalFlowfrontend::SetLeftCamera(Pinholecamera::Ptr camera_left) {
@@ -70,7 +70,7 @@ namespace myslam {
         camera_right_ = camera_right;
     }
 
-    bool OpticalFlowfrontend::BuildInitMap() {
+    bool OpticalFlowfrontend::BuildInitMap(Frame::Ptr frame) {
         std::vector<SE3> poses{camera_left_->pose(), camera_right_->pose()};
         for (size_t i = 0; i < poses.size(); ++i) {
             const auto &pose = poses[i];
@@ -80,6 +80,36 @@ namespace myslam {
             LOG(INFO) << "Rotation Matrix:\n"
                     << pose.rotationMatrix();
         }
+
+        size_t cnt_init_landmarks = 0; // 地图点计数器
+        for (size_t i = 0; i < frame->features_left_.size(); ++i) {
+            if (frame->features_right_[i] == nullptr)
+                continue;
+            std::vector<Vec3> points{
+                camera_left_->pixelToCam(Vec2(frame->features_left_[i]->position_.pt.x,
+                                              frame->features_left_[i]->position_.pt.y)),
+                camera_right_->pixelToCam(Vec2(frame->features_right_[i]->position_.pt.x,
+                                               frame->features_right_[i]->position_.pt.y)),
+            };
+
+
+            // for (size_t i = 0; i < points.size(); ++i)
+            // {
+            //     const auto &point = points[i];
+            //     LOG(INFO) << "Point " << i << ": ("
+            //               << point[0] << ", "
+            //               << point[1] << ", "
+            //               << point[2] << ")";
+            // }
+
+            Vec3 pworld = Vec3::Zero(); // 存储求解后的三维空间点
+
+            if (triangulation(poses, points, pworld) && pworld[2] > 0) // 三角化求点在世界坐标系中的位置
+            {
+                LOG(INFO) << pworld;
+            }
+        }
+
         return true;
     }
 }

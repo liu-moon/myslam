@@ -24,6 +24,6 @@ namespace myslam {
 
         void SetCameras(Pinholecamera::Ptr camera_left, Pinholecamera::Ptr camera_right);
 
-        bool BuildInitMap();
+        bool BuildInitMap(Frame::Ptr frame);
     };
 }
