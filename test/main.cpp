@@ -43,11 +43,11 @@ int main()
     std::cout << "Detected " << frame->features_left_.size() << " features." << std::endl;
 
     Viewer::Ptr viewer = std::make_shared<Viewer>();
-    viewer->DisplayKeypoints(frame);
-
-    viewer->DisplayKeypoints(frame2);
-
-    viewer->DisplayKeypoints(frame2, false);
+    // viewer->DisplayKeypoints(frame);
+    //
+    // viewer->DisplayKeypoints(frame2);
+    //
+    // viewer->DisplayKeypoints(frame2, false);
 
     // dataset
     std::string dataset_path = "/home/liuiu/下载/data_odometry_gray/dataset/sequences/00/";
@@ -56,5 +56,8 @@ int main()
 
     OpticalFlowfrontend.SetCameras(Kittidataset->GetCamera(0), Kittidataset->GetCamera(1));
     OpticalFlowfrontend.BuildInitMap(frame2);
+    viewer->SetMap(OpticalFlowfrontend.map_);
+    viewer->UpdateMap();
+    viewer->ThreadLoop();
     return 0;
 }

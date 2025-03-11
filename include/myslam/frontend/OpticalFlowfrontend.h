@@ -12,9 +12,10 @@ namespace myslam {
         cv::Ptr<cv::GFTTDetector> gftt_;
         Pinholecamera::Ptr camera_left_ = nullptr;
         Pinholecamera::Ptr camera_right_ = nullptr;
-        Map::Ptr map_;
+
 
     public:
+        Map::Ptr map_;
         OpticalFlowfrontend(int num_features = 500);
 
         OpticalFlowfrontend(Map::Ptr map, int num_features = 500);

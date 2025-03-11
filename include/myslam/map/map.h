@@ -11,8 +11,16 @@ namespace myslam {
         Map(){};
 
         void InsertMapPoint(MapPoint::Ptr map_point);
+
+        /// 获取激活地图点
+        LandmarksType GetActiveMapPoints()
+        {
+            // std::unique_lock<std::mutex> lck(data_mutex_);
+            return active_landmarks_;
+        }
     private:
         LandmarksType landmarks_;        // all landmarks
         LandmarksType active_landmarks_; // active landmarks
+        std::mutex data_mutex_;
     };
 }

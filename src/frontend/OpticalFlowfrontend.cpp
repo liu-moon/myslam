@@ -63,8 +63,8 @@ namespace myslam {
 
         // 调用绘图函数
         // todo 这里放在类外执行
-        Viewer::Ptr viewer = std::make_shared<Viewer>();
-        viewer->DrawFeatureMatches(frame->left_img_, frame->right_img_, kps_left, kps_right, status);
+        // Viewer::Ptr viewer = std::make_shared<Viewer>();
+        // viewer->DrawFeatureMatches(frame->left_img_, frame->right_img_, kps_left, kps_right, status);
     }
 
     void OpticalFlowfrontend::SetLeftCamera(Pinholecamera::Ptr camera_left) {

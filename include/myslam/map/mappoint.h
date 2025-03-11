@@ -22,6 +22,11 @@ namespace myslam {
             pos_ = pos;
         };
 
+        Vec3 Pos() {
+            std::unique_lock<std::mutex> lck(data_mutex_);
+            return pos_;
+        }
+
         void AddObservation(std::shared_ptr<Feature> feature) {
             // 添加观测
             std::unique_lock<std::mutex> lck(data_mutex_);

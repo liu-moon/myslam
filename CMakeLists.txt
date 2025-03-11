@@ -20,9 +20,14 @@ include_directories(${GLOG_INCLUDE_DIRS})
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIRS})
 
+# Pangolin
+find_package(Pangolin REQUIRED)
+
 set(THIRD_PARTY_LIBS
         glog::glog
-        ${OpenCV_LIBS})
+        ${OpenCV_LIBS}
+        ${Pangolin_LIBRARIES} GL GLU GLEW glut
+)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
